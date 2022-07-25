@@ -21,7 +21,7 @@ pipeline {
              
              //    sh 'git pull https://github.com/sidd-harth/test-cd'
             
-              dir("jenkins-demo") {
+              dir("test-cd/jenkins-demo") {
       
                 sh 'sed -i "x#siddharth67.*#siddharth67/ss:""$GIT_COMMIT""#y" deployment.yaml'
                 sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
