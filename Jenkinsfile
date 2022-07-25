@@ -11,10 +11,21 @@ pipeline {
     
     stage('Push Image') {
             steps {
-               withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
-           
+              withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
                  sh 'docker push siddharth67/ss:""$GIT_COMMIT""'
                }
+            }
+        } 
+    stage('Git Clone') {
+            steps {
+             
+                 sh 'git clone https://github.com/sidd-harth/test-cd'
+            
+              dir("jenkins-demo") {
+                sh "git config --global user.email 'ci@ci.com'"
+                sh "sed -i 's/siddharth67.*/siddharth67/ss:""$GIT_COMMIT""/g' deployment.yaml"
+                sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
+              }
             }
         } 
     }
