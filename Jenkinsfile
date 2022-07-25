@@ -22,8 +22,9 @@ pipeline {
              //    sh 'git pull https://github.com/sidd-harth/test-cd'
             
               dir("test-cd/jenkins-demo") {
-      
+                sh "git config --global user.email 'ci@ci.com'"
                 sh 'sed -i "x#siddharth67.*#siddharth67/ss:""$GIT_COMMIT""#y" deployment.yaml'
+                sh 'cat deployment.yaml'
                 sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
               }
             }
