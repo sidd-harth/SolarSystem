@@ -19,7 +19,7 @@ pipeline {
     stage('Git Clone') {
             steps {
              
-                 sh 'git pull https://github.com/sidd-harth/test-cd'
+             //    sh 'git pull https://github.com/sidd-harth/test-cd'
             
               dir("jenkins-demo") {
       
