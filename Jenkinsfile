@@ -11,8 +11,8 @@ pipeline {
     
     stage('Push Image') {
             steps {
-                 sh 'docker login --username siddharth67 --password Qwerty6& &&  docker push siddharth67/ss:""$GIT_COMMIT""'
-             
+                 sh 'docker login --username siddharth67 --password Qwerty6& '
+                 sh 'docker push siddharth67/ss:""$GIT_COMMIT""'
             }
         } 
     }
