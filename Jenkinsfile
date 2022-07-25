@@ -23,7 +23,7 @@ pipeline {
             
               dir("jenkins-demo") {
       
-                sh 'sed -i 's/siddharth67.*/siddharth67/ss:""$GIT_COMMIT""/g' deployment.yaml'
+                sh 'sed -i "s/siddharth67.*/siddharth67/ss:""$GIT_COMMIT""/g" deployment.yaml'
                 sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
               }
             }
