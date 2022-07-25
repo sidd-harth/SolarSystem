@@ -11,8 +11,10 @@ pipeline {
     
     stage('Push Image') {
             steps {
-                 sh 'sudo docker login --username siddharth67 --password Qwerty6& '
+               withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+           
                  sh 'sudo docker push siddharth67/ss:""$GIT_COMMIT""'
+               }
             }
         } 
     }
