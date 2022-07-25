@@ -13,7 +13,7 @@ pipeline {
             steps {
                withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
            
-                 sh 'sudo docker push siddharth67/ss:""$GIT_COMMIT""'
+                 sh 'docker push siddharth67/ss:""$GIT_COMMIT""'
                }
             }
         } 
