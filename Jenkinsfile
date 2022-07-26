@@ -19,7 +19,7 @@ pipeline {
     stage('Git Clone') {
             steps {
              
-             //    sh 'git clone https://github.com/sidd-harth/test-cd'
+                sh 'git clone -b feature https://github.com/sidd-harth/test-cd'
             
               dir("test-cd/jenkins-demo") {
                 sh "git config --global user.email 'ci@ci.com'"
@@ -28,10 +28,10 @@ pipeline {
                // sh 'git remote set-url  origin git@github.com:sidd-harth/test-cd.git'
                // sh "git commit -am 'Publish new version' && git push origin main || echo 'no changes'"
               //  sh 'gh auth status'
-                sh 'gh auth login -h github.com  -p https --with-token < /home/devsecops/token.txt'
+               // sh 'gh auth login -h github.com  -p https --with-token < /home/devsecops/token.txt'
                 
-                sh 'gh auth status'
-                sh 'gh pr create -a @me --title test1 --body wiilThisWork'
+            //    sh 'gh auth status'
+             //   sh 'gh pr create -a @me --title test1 --body wiilThisWork'
               }
             }
         } 
