@@ -26,7 +26,7 @@ pipeline {
                 sh 'sed -i "s#siddharth67.*#siddharth67/ss:""$GIT_COMMIT""#g" deployment.yaml'
                 sh 'cat deployment.yaml'
                // sh 'git remote set-url  origin git@github.com:sidd-harth/test-cd.git'
-               sh 'git commit -am 'Publish new version'
+               sh 'git commit -am "Publish new version"'
                sh 'git push origin feature'
               //  sh 'gh auth status'
                // sh 'gh auth login -h github.com  -p https --with-token < /home/devsecops/token.txt'
