@@ -19,7 +19,7 @@ pipeline {
     stage('Git Clone') {
             steps {
              
-                sh 'git clone -b feature https://github.com/sidd-harth/test-cd'
+               // sh 'git clone -b feature https://github.com/sidd-harth/test-cd'
             
               dir("test-cd/jenkins-demo") {
                 sh "git config --global user.email 'ci@ci.com'"
