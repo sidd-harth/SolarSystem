@@ -29,10 +29,10 @@ pipeline {
                sh 'git commit -am "Publish new version"'
                sh 'git push origin feature'
               //  sh 'gh auth status'
-               // sh 'gh auth login -h github.com  -p https --with-token < /home/devsecops/token.txt'
+               sh 'gh auth login -h github.com  -p https --with-token < /home/devsecops/token.txt'
                 
-            //    sh 'gh auth status'
-             //   sh 'gh pr create -a @me --title test1 --body wiilThisWork'
+                sh 'gh auth status'
+              sh 'gh pr create -a @me --title test1 --body wiilThisWork -B main'
               }
             }
         } 
