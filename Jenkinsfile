@@ -41,7 +41,7 @@ pipeline {
     stage('Git Clone') {
       when {
         expression {
-          return fileExists('test-cd')
+          return fileExists('!test-cd')
         }
       }
       steps {
