@@ -44,6 +44,24 @@ pipeline {
                echo "file exists"
               }
     }
+     stage('Update Manifest') {
+      
+        steps {
+                 sh "git config --global user.email 'ci@ci.com'"
+                sh 'sed -i "s#siddharth67.*#siddharth67/ss:""$GIT_COMMIT""#g" deployment.yaml'
+                sh 'cat deployment.yaml'
+           sh 'git commit -am "Publish new version""$GIT_COMMIT"""'
+               sh 'git push origin feature'
+              }
+    }
     
+     stage('Raisse PR') {
+      
+        steps {
+    sh 'gh auth login -h github.com  -p https --with-token < /home/devsecops/token.txt'
+                
+                sh 'gh auth status'
+              sh 'gh pr create -a @me --title test1 --body wiilThisWork -B main'
+        }}
     }
 }
