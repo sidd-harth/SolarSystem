@@ -41,7 +41,7 @@ pipeline {
     stage('Git Clone') {
       when {
         expression {
-          return fileExists('test-cd')
+          return fileExists('!test-cd')
         }
       }
       steps {
@@ -61,13 +61,14 @@ pipeline {
       }
     }
 
-    stage('Raisse PR') {
+    stage('Raise PR') {
 
       steps {
         sh 'gh auth login -h github.com  -p https --with-token < /home/devsecops/token.txt'
         sh 'gh auth status'
-        sh 'git checkout feature'
-        sh 'gh pr create -a @me --title test1 --body wiilThisWork -B main -H feature'
+//         sh 'git checkout feature'
+        sh 'git remote -v'
+        sh 'gh pr create -a @me --title test1 --body wiilThisWork -B main'
       }
     }
   }
