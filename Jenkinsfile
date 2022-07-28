@@ -64,6 +64,20 @@ pipeline {
          }
       }
     }
+    
+     stage('Commit & Push') {
+
+      steps {
+         dir("test-cd/jenkins-demo") {
+        
+       //   sh 'git remote add origin https://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@github.com/sidd-harth/test-cd.git'
+      //     sh 'git checkout feature'
+          sh 'git add -A'
+          sh 'git commit -am "Updated new image version for GIT COMMIT - ""$GIT_COMMIT"""'
+          sh 'git push origin feature'
+         }
+      }
+    }
 
     stage('Raise PR') {
 
