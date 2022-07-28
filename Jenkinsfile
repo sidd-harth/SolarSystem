@@ -67,7 +67,7 @@ pipeline {
         sh 'gh auth login -h github.com  -p https --with-token < /home/devsecops/token.txt'
         sh 'gh auth status'
         sh 'git checkout feature'
-        sh 'gh pr create -a @me --title test1 --body wiilThisWork -B main'
+        sh 'gh pr create -a @me --title test1 --body wiilThisWork -B main -H feature'
       }
     }
   }
