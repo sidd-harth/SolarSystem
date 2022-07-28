@@ -39,13 +39,14 @@ pipeline {
     // }
     
     stage('Git Clone') {
-      when {
-        expression {
-          return fileExists('!test-cd')
-        }
-      }
       steps {
-        sh 'git clone https://github.com/sidd-harth/test-cd.git'
+        script{
+          if (fileExists('test-cd')) {
+             echo 'Cloned repo already exists' 
+          } else {
+            sh 'git clone https://github.com/sidd-harth/test-cd.git'
+          }
+         }
       }
     }
     stage('Update Manifest') {
