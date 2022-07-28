@@ -60,7 +60,7 @@ pipeline {
       //     sh 'git checkout feature'
           sh 'git add .'
           sh 'git commit -am "Updated new image version for GIT COMMIT - ""$GIT_COMMIT"""'
-          sh 'git push'
+          sh 'git push origin feature'
          }
       }
     }
