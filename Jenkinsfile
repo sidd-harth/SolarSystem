@@ -51,11 +51,13 @@ pipeline {
     stage('Update Manifest') {
 
       steps {
-        sh "git config --global user.email 'ci@ci.com'"
-        sh 'sed -i "s#siddharth67.*#siddharth67/ss:""$GIT_COMMIT""#g" deployment.yaml'
-        sh 'cat deployment.yaml'
-        sh 'git commit -am "Publish new version""$GIT_COMMIT"""'
-        sh 'git push origin feature'
+         dir("test-cd/jenkins-demo") {
+          sh "git config --global user.email 'ci@ci.com'"
+          sh 'sed -i "s#siddharth67.*#siddharth67/ss:""$GIT_COMMIT""#g" deployment.yaml'
+          sh 'cat deployment.yaml'
+          sh 'git commit -am "Publish new version""$GIT_COMMIT"""'
+          sh 'git push origin feature'
+         }
       }
     }
 
