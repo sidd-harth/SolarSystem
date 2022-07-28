@@ -55,6 +55,7 @@ pipeline {
           sh "git config --global user.email 'ci@ci.com'"
           sh 'sed -i "s#siddharth67.*#siddharth67/ss:""$GIT_COMMIT""#g" deployment.yaml'
           sh 'cat deployment.yaml'
+          sh 'git remote add origin https://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@github.com/sidd-harth/test-cd.git'
           sh 'git commit -am "Updated new image version for GIT COMMIT - ""$GIT_COMMIT"""'
           sh 'git push origin feature'
          }
@@ -66,7 +67,7 @@ pipeline {
       steps {
         sh 'gh auth login -h github.com  -p https --with-token < /home/devsecops/token.txt'
         sh 'gh auth status'
-//         sh 'git checkout feature'
+        sh 'git remote add origin https://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@github.com/sidd-harth/test-cd.git'
         sh 'git remote -v'
         sh 'gh pr create -a @me --title test1 --body wiilThisWork -B main'
       }
