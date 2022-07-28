@@ -57,6 +57,7 @@ pipeline {
           sh 'sed -i "s#siddharth67.*#siddharth67/ss:""$GIT_COMMIT""#g" deployment.yaml'
           sh 'cat deployment.yaml'
        //   sh 'git remote add origin https://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@github.com/sidd-harth/test-cd.git'
+           sh 'git checkout deployment'
           sh 'git commit -am "Updated new image version for GIT COMMIT - ""$GIT_COMMIT"""'
           sh 'git push'
          }
