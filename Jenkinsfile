@@ -39,7 +39,7 @@ pipeline {
 //             }
 //         } 
     stage('Git Clone') {
-       when { expression { return fileExists ('/test-cd') } }
+       when { expression { return fileExists ('test-cd') } }
         steps {
                echo "file exists"
               }
