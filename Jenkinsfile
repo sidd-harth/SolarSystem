@@ -45,7 +45,7 @@ pipeline {
         }
       }
       steps {
-        echo "file exists"
+        sh 'git clone https://github.com/sidd-harth/test-cd.git'
       }
     }
     stage('Update Manifest') {
