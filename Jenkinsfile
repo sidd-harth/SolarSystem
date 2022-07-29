@@ -69,7 +69,7 @@ pipeline {
 
       steps {
          dir("test-cd/jenkins-demo") {
-          sh 'git remote add origin https://$GIT_TOKEN@github.com/sidd-harth/test-cd.git'
+          sh 'git remote set-url origin https://$GIT_TOKEN@github.com/sidd-harth/test-cd.git'
           sh 'git checkout feature'       
           sh 'git add -A'
           sh 'git commit -am "Updated new image version for GIT COMMIT - ""$GIT_COMMIT"""'
