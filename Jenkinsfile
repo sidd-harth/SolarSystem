@@ -63,7 +63,7 @@ pipeline {
          dir("test-cd/jenkins-demo") {
           sh 'gh auth login -h github.com  -p https --with-token < /home/devsecops/token.txt'
           sh 'gh auth status'
-          sh 'gh pr create -a @me --title Updated Image Version --body Updated Solar System - ""$GIT_COMMIT""  -B main'
+          sh 'gh pr create -a @me --title "Updated Image Version" --body "Updated Solar System - ""$GIT_COMMIT"""  -B main'
          }
       }
     }
