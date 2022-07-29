@@ -26,7 +26,10 @@ pipeline {
       steps {
         script{
           if (fileExists('test-cd')) {
-             echo 'Cloned repo already exists' 
+             echo 'Cloned repo already exists - Pulling latest changes'
+              dir("test-cd"){
+                sh 'git pull'
+              }
           } else {
             sh 'git clone -b feature https://github.com/sidd-harth/test-cd.git'
           }
