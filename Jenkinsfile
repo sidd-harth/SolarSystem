@@ -1,5 +1,10 @@
 pipeline {
   agent any
+  
+     environment {
+        GIT_TOKEN = credentials('github-token')
+       
+    }
 
   stages {
     stage('Build Image') {
@@ -56,11 +61,6 @@ pipeline {
           sh "git config --global user.email 'ci@ci.com'"
           sh 'sed -i "s#siddharth67.*#siddharth67/ss:""$GIT_COMMIT""#g" deployment.yaml'
           sh 'cat deployment.yaml'
-       //   sh 'git remote add origin https://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@github.com/sidd-harth/test-cd.git'
-      //     sh 'git checkout feature'
-          sh 'git add .'
-          sh 'git commit -am "Updated new image version for GIT COMMIT - ""$GIT_COMMIT"""'
-          sh 'git push origin feature'
          }
       }
     }
@@ -69,9 +69,8 @@ pipeline {
 
       steps {
          dir("test-cd/jenkins-demo") {
-        
-       //   sh 'git remote add origin https://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@github.com/sidd-harth/test-cd.git'
-      //     sh 'git checkout feature'
+          sh 'git remote add origin https://$GIT_TOKEN@github.com/sidd-harth/test-cd.git'
+          sh 'git checkout feature'       
           sh 'git add -A'
           sh 'git commit -am "Updated new image version for GIT COMMIT - ""$GIT_COMMIT"""'
           sh 'git push origin feature'
